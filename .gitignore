@@ -1,0 +1,59 @@
+# Node modules
+node_modules/
+
+# Platforms
+platforms/
+
+# Plugins
+plugins/
+
+# Web build
+www/
+
+# Build output
+build/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Distribution folder
+dist/
+
+# Environment variables file
+*.env
+
+# Mac specific files
+.DS_Store
+
+# Logs
+*.log
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packaging
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Angular cache
+.angular/cache/
+
