@@ -45,7 +45,7 @@
       <swiper-slide>
         <ion-card
           class="event1"
-          [routerLink]="['/', 'home', 'events', event?.id]"
+          [routerLink]="['/', 'home', 'events', event?._id]"
         >
           <ion-item lines="none">
             <ion-thumbnail slot="start">
@@ -57,11 +57,11 @@
                 {{ event?.date | date: 'MMM d, y' }}
               </ion-text>
               <p class="title">
-                <ion-text color="dark"> {{ event?.name }} </ion-text>
+                <ion-text color="dark"> {{ event?.title }} </ion-text>
               </p>
               <p class="location">
                 <ion-icon name="location-outline"></ion-icon>
-                {{ event?.location }}
+                {{ event?.channel }}
               </p>
             </ion-label>
           </ion-item>
@@ -112,9 +112,9 @@
     </swiper-container>
   </ion-list>
 
-  @for(event of currentEvents; track $index) {
+  @for(event of currentFilms; track $index) {
   <ion-card
-    [routerLink]="['/', 'home', 'events', event?.id]"
+    [routerLink]="['/', 'home', 'events', event?._id]"
     class="event2"
     [style.backgroundImage]="'url('+ event.image +')'"
   >
@@ -122,7 +122,7 @@
     <ion-label>
       {{ event?.date | date: 'MMM d, y' }}
       <p>
-        {{ event?.name }}
+        {{ event?.title }}
       </p>
     </ion-label>
 

@@ -13,13 +13,13 @@
 
   <ion-item lines="none">
     <ion-label class="eventInfo"> 
-      {{event.name}} 
+      {{event.title}} 
       <ion-row>
         <ion-col>
           <ion-icon name="calendar-outline"></ion-icon>
           {{event.date | date: 'MMM d, y'}}
           <ion-icon name="location-outline" class="loc"></ion-icon>
-          {{event.location}}
+          {{event.channel}}
         </ion-col>
       </ion-row>
     </ion-label>
@@ -33,9 +33,12 @@
   <ion-card>
 
     <ion-list>
-      <ion-list-header> About Event </ion-list-header>
+      <ion-list-header> About Film </ion-list-header>
 
-      <p class="ion-margin-horizontal">{{event.description}}</p>
+      <p class="ion-margin-horizontal">{{event.creator}}</p>
+      <p class="ion-margin-horizontal">{{event.rating}}</p>
+      <p class="ion-margin-horizontal">{{event.date}}</p>
+      <p class="ion-margin-horizontal">{{event.channel}}</p>
 
       <ion-row>
         <ion-col class="ion-align-items-center">

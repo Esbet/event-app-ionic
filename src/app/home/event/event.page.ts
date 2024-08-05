@@ -16,6 +16,9 @@ import { addIcons } from 'ionicons';
 import { calendarOutline, heartOutline, locationOutline } from 'ionicons/icons';
 import { events } from 'src/app/data/event';
 import { Event } from 'src/app/interfaces/event.interface';
+import { Film } from 'src/app/interfaces/film.interface';
+import { FilmsServiceService } from 'src/app/services/films-service.service';
+
 
 @Component({
   selector: 'app-event',
@@ -37,9 +40,10 @@ import { Event } from 'src/app/interfaces/event.interface';
   ],
 })
 export class EventPage implements OnInit {
-  event!: Event;
+  event: any = {};
 
   private route = inject(ActivatedRoute);
+  filmService = inject(FilmsServiceService)
 
   constructor() {
     addIcons({ calendarOutline, locationOutline, heartOutline });
@@ -53,7 +57,9 @@ export class EventPage implements OnInit {
     }
   }
 
-  getEvent(id: string) {
-    this.event = events.find((event) => event.id == id)!;
+  async getEvent(id: string) {
+    const response = await this.filmService.getSeriesById(id);
+    console.log(response);
+    this.event = response;
   }
 }

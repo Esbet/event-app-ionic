@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -27,12 +27,11 @@ import {
   optionsOutline,
 } from 'ionicons/icons';
 import { Category } from '../interfaces/category.interface';
-import { Event } from '../interfaces/event.interface';
-
 import { categories } from '../data/categories';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { events } from '../data/event';
+import { Film } from '../interfaces/film.interface';
+import {FilmsServiceService} from '../services/films-service.service';
 
 @Component({
   selector: 'app-home',
@@ -63,9 +62,11 @@ import { events } from '../data/event';
 })
 export class HomePage implements OnInit {
   swiperModules = [IonicSlides];
-  upcomingEvents: Event[] = [];
-  currentEvents: Event[] = [];
+  upcomingEvents: Film[] = [];
+  currentFilms: Film[] = [];
   categories: Category[] = [];
+
+  filmService = inject(FilmsServiceService)
 
   constructor() {
     addIcons({
@@ -77,17 +78,19 @@ export class HomePage implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.currentEvents = [...events];
-    console.log('current', this.currentEvents);
-    this.upcomingEvents = events.sort((a, b) => {
-      // Convert id to number for comparison
+  async ngOnInit() {
+    const response = await this.filmService.getAll();
+    this.currentFilms = response; 
+  
+
+    this.upcomingEvents = [...response].sort((a, b) => {
+    
       const idA = parseInt(a.id, 10);
       const idB = parseInt(b.id, 10);
-      return idB - idA; // Descending order
+      return idB - idA; 
     });
-    console.log(this.upcomingEvents);
+  
     this.categories = [...categories];
-    console.log(this.categories);
   }
+  
 }
