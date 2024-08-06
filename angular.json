@@ -98,22 +98,9 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
-              }
+            "styles": [
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
             "scripts": []
-          },
-          "configurations": {
-            "ci": {
-              "progress": false,
-              "watch": false
-            }
           }
         },
         "lint": {

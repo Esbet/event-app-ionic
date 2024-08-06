@@ -14,9 +14,6 @@ import {
   IonIcon, IonCard, IonListHeader, IonList, IonAvatar, IonText, IonFooter, IonButton, IonFabButton } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { calendarOutline, heartOutline, locationOutline } from 'ionicons/icons';
-import { events } from 'src/app/data/event';
-import { Event } from 'src/app/interfaces/event.interface';
-import { Film } from 'src/app/interfaces/film.interface';
 import { FilmsServiceService } from 'src/app/services/films-service.service';
 
 
