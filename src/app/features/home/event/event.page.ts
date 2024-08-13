@@ -14,8 +14,8 @@ import {
   IonIcon, IonCard, IonListHeader, IonList, IonAvatar, IonText, IonFooter, IonButton, IonFabButton } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { calendarOutline, heartOutline, locationOutline } from 'ionicons/icons';
-import { FilmsServiceService } from 'src/app/services/films-service.service';
-
+import { FilmsServiceService } from '../../../core/services/films-service.service';
+import { FilmsController } from '../../../headless/films.controller';
 
 @Component({
   selector: 'app-event',
@@ -42,21 +42,12 @@ export class EventPage implements OnInit {
   private route = inject(ActivatedRoute);
   filmService = inject(FilmsServiceService)
 
-  constructor() {
+  constructor(private filmController: FilmsController) {
     addIcons({ calendarOutline, locationOutline, heartOutline });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
-    if (id) {
-      this.getEvent(id);
-    }
-  }
-
-  async getEvent(id: string) {
-    const response = await this.filmService.getSeriesById(id);
-    console.log(response);
-    this.event = response;
+    this.event = await this.filmController.fetchFilmById(id!);
   }
 }

@@ -31,6 +31,8 @@ describe('WelcomePage', () => {
     expect(component).toBeTruthy();
   });
 
+
+/**verifies that the component's onboardingScreens property is correctly initialized with the expected images. */
   it('should initialize onboardingScreens with correct images', () => {
     expect(component.onboardingScreens).toEqual([
       { image: '1.jpg' },
@@ -39,11 +41,12 @@ describe('WelcomePage', () => {
     ]);
   });
 
+  /**Verifies that the component's swiperModules property is correctly initialized with the IonicSlides module. */
   it('should initialize swiperModules with IonicSlides', () => {
     expect(component.swiperModules).toEqual([IonicSlides]);
   });
 
-  /**Test template rendering */
+  /**Verifies that the swiper-container and swiper-slide elements render correctly in the component view.*/
   it('should render the swiper-container and swiper-slide elements', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const swiperContainer = compiled.querySelector('swiper-container');
@@ -53,6 +56,7 @@ describe('WelcomePage', () => {
     expect(swiperSlides.length).toBe(component.onboardingScreens.length);
   });
 
+  /**Verify that the "Get Started" button renders correctly in the component's DOM and that its text is as expected. */
   it('should render the Get Started button with correct text', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const button = compiled.querySelector('ion-button');

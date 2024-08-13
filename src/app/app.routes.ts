@@ -6,11 +6,11 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+        loadComponent: () => import('./features/home/home.page').then((m) => m.HomePage),
       },
       {
         path: 'events/:id',
-        loadComponent: () => import('./home/event/event.page').then( m => m.EventPage)
+        loadComponent: () => import('./features/home/event/event.page').then( m => m.EventPage)
       },
     ],
   },
@@ -21,6 +21,6 @@ export const routes: Routes = [
   },
   {
     path: 'welcome',
-    loadComponent: () => import('./welcome/welcome.page').then( m => m.WelcomePage)
+    loadComponent: () => import('./features/welcome/welcome.page').then( m => m.WelcomePage)
   },
 ];

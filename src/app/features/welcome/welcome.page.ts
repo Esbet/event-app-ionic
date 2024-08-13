@@ -1,6 +1,8 @@
 import { NgStyle } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { GenericButtonComponent } from '../../shared/components/generic-button/generic-button.component'; // Importar el componente
+
 import {
   IonContent,
   IonFooter,
@@ -23,6 +25,7 @@ import {
     IonContent,
     RouterLink,
     NgStyle,
+    GenericButtonComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

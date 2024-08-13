@@ -1,0 +1,143 @@
+<ion-header class="header">
+  <ion-toolbar class="header__toolbar wrapper">
+    <ion-item lines="none" class="header__location">
+      <ion-label color="light" class="header__location-label">
+        <div class="header__location-info">
+          <ion-icon name="locate-outline"></ion-icon>
+          <ion-text>Events near me</ion-text>
+        </div>
+        <p class="header__location-city">Medellin, Colombia</p>
+      </ion-label>
+
+      <ion-fab-button size="small" class="header__notification-button">
+        <ion-icon class="header__notification-ic"  name="notifications-outline" color="medium"></ion-icon>
+        <ion-badge>&#9679;</ion-badge>
+      </ion-fab-button>
+    </ion-item>
+
+    <ion-toolbar class="header__search-bar srchBar" mode="ios">
+      <ion-row>
+        <ion-col size="10">
+          <ion-searchbar placeholder="Search events"></ion-searchbar>
+        </ion-col>
+        <ion-col size="2">
+          <ion-fab-button size="small" color="light">
+            <ion-icon name="options-outline" color="medium"></ion-icon>
+          </ion-fab-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content color="light">
+  <ion-list class="upcoming-events">
+    <ion-list-header class="upcoming-events__header" mode="ios"> Upcoming Events </ion-list-header>
+  
+    <swiper-container
+      #event_upcoming
+      class="upcoming-events__slider"
+      [modules]="swiperModules"
+      [slidesPerView]="1.35"
+      [keyboard]="true"
+      [centerSlides]="true"
+    >
+      @for(event of upcomingEvents; track $index) {
+      <swiper-slide class="upcoming-events__slide">
+        <ion-card
+          class="upcoming-events__card"
+          [routerLink]="['/', 'home', 'events', event?._id]"
+        >
+          <ion-item lines="none" class="upcoming-events__item">
+            <ion-thumbnail slot="start" class="upcoming-events__thumbnail">
+              <ion-img [src]="event.image"></ion-img>
+            </ion-thumbnail>
+  
+            <ion-label class="upcoming-events__label">
+              <ion-text class="upcoming-events__date">
+                {{ event?.date | date: 'MMM d, y' }}
+              </ion-text>
+              <p class="upcoming-events__title">
+                <ion-text color="dark"> {{ event?.title }} </ion-text>
+              </p>
+              <p class="upcoming-events__location">
+                <ion-icon name="location-outline"></ion-icon>
+                {{ event?.channel }}
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+      </swiper-slide>
+      }
+    </swiper-container>
+  </ion-list>
+  
+
+  <ion-list class="top-picks">
+    <ion-item-divider class="top-picks__divider" mode="ios" color="light">
+      Top Picks
+      <img src="assets/imgs/fire.png" class="top-picks__divider-icon" />
+      <ion-button slot="end" fill="clear" color="medium" class="top-picks__button"> View All </ion-button>
+    </ion-item-divider>
+  
+    <swiper-container
+      #category
+      class="top-picks__slider"
+      [modules]="swiperModules"
+      [slidesPerView]="2.6"
+      [keyboard]="true"
+      [centerSlides]="true"
+    >
+      <swiper-slide class="top-picks__slide">
+        <ion-card class="top-picks__card">
+          <ion-item lines="none" class="top-picks__item">
+            <ion-avatar slot="start" class="top-picks__avatar">
+              <ion-img [src]="'assets/imgs/all.png'"></ion-img>
+            </ion-avatar>
+  
+            <ion-label class="top-picks__label"> All </ion-label>
+          </ion-item>
+        </ion-card>
+      </swiper-slide>
+      @for(ctgory of categories; track $index) {
+      <swiper-slide class="top-picks__slide">
+        <ion-card class="top-picks__card">
+          <ion-item lines="none" class="top-picks__item">
+            <ion-avatar slot="start" class="top-picks__avatar">
+              <ion-img [src]="ctgory.image"></ion-img>
+            </ion-avatar>
+  
+            <ion-label class="top-picks__label"> {{ ctgory.name }} </ion-label>
+          </ion-item>
+        </ion-card>
+      </swiper-slide>
+      }
+    </swiper-container>
+  </ion-list>
+  
+  @for(event of currentFilms; track $index) {
+  
+    <ion-card
+    [routerLink]="['/', 'home', 'events', event?._id]"
+    class="event-card"
+    [style.backgroundImage]="'url('+ event.image +')'"
+  >
+    <ion-item class="event-card__item" lines="none">
+      <ion-label class="event-card__label">
+        
+          {{ event?.channel}}
+        <p class="event-card__title">
+          {{ event?.title }}
+        </p>
+      </ion-label>
+  
+      <ion-fab-button class="event-card__button" slot="end" size="small">
+        <ion-icon name="arrow-forward-outline" class="event-card__icon"></ion-icon>
+      </ion-fab-button>
+    </ion-item>
+  </ion-card>
+  
+  
+  }
+</ion-content>

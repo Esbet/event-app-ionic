@@ -20,6 +20,7 @@ describe('FilmsServiceService', () => {
     expect(service).toBeTruthy();
   });
 
+  /**Verifies that the component service can make an HTTP request to obtain all the films and that it handles the response correctly. */
   it('should fetch all films', () => {
     const mockFilms: Film[] = [
       { id: '1', title: 'Event 1', image: 'image1.jpg', date: '', channel: 'Channel 1', _id: '1', creator: 'Creator 1', rating: 5 },
@@ -36,6 +37,7 @@ describe('FilmsServiceService', () => {
     req.flush(mockFilms);
   });
 
+  /**verifies that the component service can successfully obtain a single movie using a specific ID. */
   it('should fetch a single film by ID', () => {
     const mockFilm: Film = { id: '1', title: 'Event 1', image: 'image1.jpg', date: '', channel: 'Channel 1', _id: '1', creator: 'Creator 1', rating: 5 };
 

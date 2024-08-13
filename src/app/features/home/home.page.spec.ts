@@ -44,6 +44,7 @@ describe('HomePage', () => {
     expect(component).toBeTruthy();
   });
 
+  /**This unit test verifies that the component correctly loads upcoming events (upcomingEvents) during its initialization (ngOnInit). */
   it('should load upcoming events on init', fakeAsync(() => {
     fixture.detectChanges();
     tick(); 
@@ -51,6 +52,7 @@ describe('HomePage', () => {
     expect(component.upcomingEvents.length).toBe(2); 
   }));
 
+  /**verifies that upcoming events (upcomingEvents) are correctly sorted in descending order by their id after the component is initialized. */
   it('should order upcoming events by id desc', fakeAsync(() => {
     fixture.detectChanges();
     tick(); 
