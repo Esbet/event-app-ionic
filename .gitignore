@@ -57,3 +57,5 @@ dist/
 # Angular cache
 .angular/cache/
 
+
+*storybook.log
