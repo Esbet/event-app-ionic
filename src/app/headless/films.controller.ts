@@ -9,36 +9,36 @@ export class FilmsController {
 
   constructor(private filmsService: FilmsServiceService) {}
 
-  async fetchAllFilms(): Promise<Film[]> {
-    try {
-      const films = await this.filmsService.getAll();
+  // async fetchAllFilms(): Promise<Film[]> {
+  //   try {
+  //     const films = await this.filmsService.getAll();
 
-      return films;
-    } catch (error) {
-      console.error('Error al obtener las series:', error);
-      throw error; 
-    }
-  }
+  //     return films;
+  //   } catch (error) {
+  //     console.error('Error al obtener las series:', error);
+  //     throw error; 
+  //   }
+  // }
 
 
-  async fetchFilmById(id: string): Promise<Film> {
-    try {
-      const film = await this.filmsService.getSeriesById(id);
-      return film;
-    } catch (error) {
-      console.error(`Error al obtener la serie con ID ${id}:`, error);
-      throw error;
-    }
-  }
+  // async fetchFilmById(id: string): Promise<Film> {
+  //   try {
+  //     const film = await this.filmsService.getSeriesById(id);
+  //     return film;
+  //   } catch (error) {
+  //     console.error(`Error al obtener la serie con ID ${id}:`, error);
+  //     throw error;
+  //   }
+  // }
 
-  async getUpcomingEvents(): Promise<Film[]> {
-    const films = await this.fetchAllFilms();
-    return films.sort((a, b) => {
-      const idA = parseInt(a.id, 10);
-      const idB = parseInt(b.id, 10);
-      return idB - idA;
-    });
-  }
+  // async getUpcomingEvents(): Promise<Film[]> {
+  //   const films = await this.fetchAllFilms();
+  //   return films.sort((a, b) => {
+  //     const idA = parseInt(a.id, 10);
+  //     const idB = parseInt(b.id, 10);
+  //     return idB - idA;
+  //   });
+  // }
 
   async getUser(): Promise<any> {
     try {

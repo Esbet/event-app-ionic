@@ -1,25 +1,37 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
 import { ButtonComponent } from './button.component';
+import { HttpClientModule } from '@angular/common/http';
+import { moduleMetadata } from '@storybook/angular'; // Importa moduleMetadata
+import { FilmsController } from 'src/app/headless/films.controller';
+import { FilmsServiceService } from 'src/app/core/services/films-service.service';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
+// Configuración del metadato principal de la historia
 const meta: Meta<ButtonComponent> = {
   title: 'Example/Button',
   component: ButtonComponent,
+  decorators: [
+    moduleMetadata({
+      imports: [HttpClientModule], 
+      providers: [FilmsController, FilmsServiceService],
+    }),
+  ],
   tags: ['autodocs'],
   argTypes: {
     backgroundColor: {
       control: 'color',
     },
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { onClick: fn() },
+  args: {
+    onClick: () => {
+      console.log('Button clicked');
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<ButtonComponent>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+// Ejemplos de historias
 export const Primary: Story = {
   args: {
     primary: true,

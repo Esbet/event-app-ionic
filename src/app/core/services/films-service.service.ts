@@ -13,17 +13,17 @@ export class FilmsServiceService {
 
   httpClient = inject(HttpClient);
 
-  getAll(): Promise<Film[]>{
-    return firstValueFrom(
-     this.httpClient.get<Film[]>('https://peticiones.online/api/series')
-    )
-  }
+  // getAll(): Promise<Film[]>{
+  //   return firstValueFrom(
+  //    this.httpClient.get<Film[]>('https://peticiones.online/api/series')
+  //   )
+  // }
 
-  getSeriesById(id: string): Promise<Film> {
-    return firstValueFrom(
-      this.httpClient.get<Film>(`https://peticiones.online/api/series/${id}`)
-    );
-  }
+  // getSeriesById(id: string): Promise<Film> {
+  //   return firstValueFrom(
+  //     this.httpClient.get<Film>(`https://peticiones.online/api/series/${id}`)
+  //   );
+  // }
 
   getUser(): Promise<any> {
     return firstValueFrom(
